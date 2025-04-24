@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Twitch Sub Heart</title>
+  <style>
+    body {
+      margin: 0;
+      background: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .heart-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+    }
+
+    .heart {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: hotpink;
+      clip-path: path('M100 180 L40 120 A40 40 0 1 1 100 60 A40 40 0 1 1 160 120 Z');
+      filter: drop-shadow(0 0 20px hotpink) drop-shadow(0 0 40px hotpink);
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 20px hotpink) drop-shadow(0 0 40px hotpink);
+      }
+      50% {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 30px deeppink) drop-shadow(0 0 60px deeppink);
+      }
+    }
+
+    .sub-count {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 3em;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      text-shadow: 0 0 10px hotpink, 0 0 20px hotpink;
+    }
+  </style>
+</head>
+<body>
+  <div class="heart-container">
+    <div class="heart"></div>
+    <div class="sub-count" id="subCount">123</div>
+  </div>
+
+  <script>
+    // This is where you’d update the sub count dynamically
+    // For now we’ll simulate an update every 5 seconds
+    let count = 123;
+    setInterval(() => {
+      count++;
+      document.getElementById('subCount').textContent = count;
+    }, 5000);
+
+    // You’ll replace that with a fetch or WebSocket for real data
+  </script>
+</body>
+</html>
